@@ -1,0 +1,55 @@
+---
+import { BatteryCharging, TrendingUp, Truck, Users } from "lucide-astro";
+---
+
+<section class="relative py-20 bg-background text-text">
+  <div class="mx-auto max-w-6xl px-6">
+    <!-- Divider -->
+    <div class="mb-16 h-px w-full bg-border/50"></div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+      <!-- Stat 1 -->
+      <div class="group">
+        <div class="flex justify-center mb-3 text-primary">
+          <BatteryCharging class="h-6 w-6" />
+        </div>
+        <div class="text-3xl sm:text-4xl font-semibold tracking-tight">10+</div>
+        <p class="mt-2 text-sm text-muted">Years Experience</p>
+      </div>
+
+      <!-- Stat 2 -->
+      <div class="group">
+        <div class="flex justify-center mb-3 text-primary">
+          <TrendingUp class="h-6 w-6" />
+        </div>
+        <div class="text-3xl sm:text-4xl font-semibold tracking-tight">
+          Top 10
+        </div>
+        <p class="mt-2 text-sm text-muted">Selling in India</p>
+      </div>
+
+      <!-- Stat 3 -->
+      <div class="group">
+        <div class="flex justify-center mb-3 text-primary">
+          <Truck class="h-6 w-6" />
+        </div>
+        <div class="text-3xl sm:text-4xl font-semibold tracking-tight">
+          5,00,000+
+        </div>
+        <p class="mt-2 text-sm text-muted">Vehicles on Road</p>
+      </div>
+
+      <!-- Stat 4 -->
+      <div class="group">
+        <div class="flex justify-center mb-3 text-primary">
+          <Users class="h-6 w-6" />
+        </div>
+        <div class="text-3xl sm:text-4xl font-semibold tracking-tight">
+          All India
+        </div>
+        <p class="mt-2 text-sm text-muted">Driver & Dealer Network</p>
+      </div>
+    </div>
+  </div>
+</section>
