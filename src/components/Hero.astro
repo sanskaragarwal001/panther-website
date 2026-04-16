@@ -1,0 +1,63 @@
+---
+import FlowBackground from "./FlowBackground.astro";
+import Navbar from "./Navbar.astro";
+---
+
+<section
+  class="relative min-h-screen flex items-center justify-center overflow-hidden bg-background text-text"
+>
+  <!-- Navbar -->
+  <Navbar />
+
+  <!-- Animated Background -->
+  <FlowBackground />
+
+  <!-- Overlay (important for readability) -->
+  <div class="absolute inset-0 bg-background/80 backdrop-blur-px"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 mx-auto max-w-4xl px-6 text-center">
+    <!-- Badge -->
+    <div
+      class="mb-6 inline-flex items-center rounded-full border border-border bg-surface/60 px-4 py-1 text-xs text-muted backdrop-blur"
+    >
+      Top 10 Selling E-Rickshaw in India
+    </div>
+
+    <!-- Heading -->
+    <h1
+      class="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight tracking-tight"
+    >
+      The Power Behind Every Ride — Panther
+    </h1>
+
+    <!-- Subtext -->
+    <p
+      class="mt-6 text-base sm:text-lg text-muted max-w-2xl mx-auto leading-relaxed"
+    >
+      Trusted for 10+ years by drivers and dealers across India, Panther
+      delivers performance, durability, and daily reliability.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div
+      class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+    >
+      <!-- Primary -->
+      <a
+        href="#contact"
+        class="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-black hover:bg-primaryDark transition-all duration-300 shadow-[0_0_30px_rgba(24,204,252,0.3)]"
+      >
+        Get Dealership
+      </a>
+
+      <!-- Secondary -->
+      <a
+        href="#features"
+        class="w-full sm:w-auto inline-flex items-center justify-center rounded-lg border border-border px-6 py-3 text-sm font-medium text-text hover:bg-surface transition-all duration-300"
+      >
+        View Features
+      </a>
+    </div>
+  </div>
+</section>
