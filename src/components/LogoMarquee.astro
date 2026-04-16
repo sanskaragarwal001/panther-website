@@ -1,0 +1,28 @@
+---
+interface Props {
+  logos: string[];
+  direction?: "left" | "right";
+}
+
+const { logos, direction = "left" } = Astro.props;
+---
+
+<div class="relative overflow-hidden">
+  <div
+    class={`flex w-max gap-15 py-6 animate-marquee ${
+      direction === "right" ? "animate-marquee-reverse" : ""
+    }`}
+  >
+    {
+      logos.map((logo) => (
+        <div class="flex items-center justify-center">
+          <img
+            src={logo}
+            alt="partner"
+            class="h-10 w-auto opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300"
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>

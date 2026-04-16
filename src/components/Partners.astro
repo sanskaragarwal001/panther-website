@@ -1,0 +1,31 @@
+---
+import LogoMarquee from "./LogoMarquee.astro";
+
+const logos = [
+  "/partners/ceat.png",
+  "/partners/cy.png",
+  "/partners/exide.png",
+  "/partners/swiss.png",
+  "/partners/tata.png",
+];
+---
+
+<section class="py-24 bg-background text-text">
+  <div class="mx-auto max-w-7xl px-6">
+    <!-- Heading -->
+    <div class="text-center max-w-2xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl font-semibold">
+        Trusted by Industry Partners
+      </h2>
+      <p class="mt-4 text-muted text-sm sm:text-base">
+        Strong partnerships across manufacturing, distribution, and supply
+        chain.
+      </p>
+    </div>
+
+    <!-- Marquee Row -->
+    <div class="mt-16">
+      <LogoMarquee logos={logos} direction="left" />
+    </div>
+  </div>
+</section>

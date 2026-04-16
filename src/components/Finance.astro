@@ -1,0 +1,33 @@
+---
+import LogoMarquee from "./LogoMarquee.astro";
+
+const logos = [
+  "/finance/akasha.svg",
+  "/finance/bikebazar.jpg",
+  "/finance/bundela.png",
+  "/finance/credfin.png",
+  "/finance/indusind.webp",
+  "/finance/mufin.webp",
+  "/finance/revfin.svg",
+];
+---
+
+<section class="py-24 bg-background text-text">
+  <div class="mx-auto max-w-7xl px-6">
+    <!-- Heading -->
+    <div class="text-center max-w-2xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl font-semibold">
+        Easy Financing Available
+      </h2>
+      <p class="mt-4 text-muted text-sm sm:text-base">
+        Get quick approvals and flexible EMI options through our finance
+        partners.
+      </p>
+    </div>
+
+    <!-- Marquee -->
+    <div class="mt-16">
+      <LogoMarquee logos={logos} direction="right" />
+    </div>
+  </div>
+</section>
