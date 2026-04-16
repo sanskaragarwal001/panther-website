@@ -1,0 +1,90 @@
+---
+const products = [
+  { name: "Panther Deluxe", tag: "Passenger" },
+  { name: "Panther Super Deluxe", tag: "Passenger" },
+  { name: "Panther Cargo", tag: "Cargo" },
+  { name: "Panther XL", tag: "Passenger" },
+  { name: "Panther XL Cargo", tag: "Cargo" },
+  { name: "Panther XL+", tag: "Premium" },
+  { name: "Panther L5", tag: "Upcoming" },
+];
+
+const getTagStyle = (tag) => {
+  switch (tag) {
+    case "Cargo":
+      return "bg-primary/10 text-primary border-primary/20";
+    case "Upcoming":
+      return "bg-yellow-500/10 text-yellow-400 border-yellow-500/20";
+    case "Premium":
+      return "bg-purple-500/10 text-purple-400 border-purple-500/20";
+    default:
+      return "bg-border/30 text-muted border-border";
+  }
+};
+---
+
+<section id="products" class="relative py-24 bg-background text-text">
+  <div class="mx-auto max-w-7xl px-6">
+
+    <!-- Heading -->
+    <div class="text-center max-w-2xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">
+        Our Product Lineup
+      </h2>
+      <p class="mt-4 text-muted text-sm sm:text-base">
+        A complete range of e-rickshaws designed for different needs —
+        from passenger mobility to cargo transport.
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      {products.map((product) => (
+        <div class="group rounded-xl border border-border bg-surface/50 overflow-hidden hover:bg-surface transition-all duration-300 hover:shadow-[0_0_30px_rgba(24,204,252,0.15)]">
+
+          <!-- Image / Placeholder -->
+          <div class="h-48 w-full bg-linear-to-br from-border/40 to-border/10 flex items-center justify-center">
+
+            <!-- Placeholder (replace later with <img />) -->
+            <span class="text-muted text-sm">
+              Image Coming Soon
+            </span>
+
+          </div>
+
+          <!-- Content -->
+          <div class="p-6">
+
+            <!-- Tag -->
+            <div class={`inline-flex items-center rounded-full border px-3 py-1 text-xs mb-3 ${getTagStyle(product.tag)}`}>
+              {product.tag}
+            </div>
+
+            <!-- Title -->
+            <h3 class="text-lg font-semibold">
+              {product.name}
+            </h3>
+
+            <!-- Description -->
+            <p class="mt-2 text-sm text-muted">
+              Built for performance, durability, and daily earning potential.
+            </p>
+
+            <!-- CTA -->
+            <a
+              href="#contact"
+              class="mt-4 inline-flex items-center text-sm text-primary hover:text-primaryDark transition-colors"
+            >
+              Enquire Now →
+            </a>
+
+          </div>
+
+        </div>
+      ))}
+
+    </div>
+
+  </div>
+</section>
