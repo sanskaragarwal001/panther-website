@@ -10,6 +10,7 @@ import Navbar from "./Navbar.astro";
   <Navbar />
 
   <!-- Animated Background -->
+  <!-- TODO: Fix why this effect tooks so much cpu power -->
   <FlowBackground />
 
   <!-- Overlay (important for readability) -->
@@ -28,7 +29,18 @@ import Navbar from "./Navbar.astro";
     <h1
       class="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight tracking-tight"
     >
-      The Power Behind Every Ride — Panther
+      The Power Behind Every Ride —
+      <span class="relative inline-block">
+        <span
+          class="bg-linear-to-r from-primary via-cyan-300 to-primaryDark bg-clip-text text-transparent"
+        >
+          Panther
+        </span>
+
+        <!-- Glow effect -->
+        <span class="absolute inset-0 blur-xl opacity-30 bg-primary rounded-lg"
+        ></span>
+      </span>
     </h1>
 
     <!-- Subtext -->
@@ -54,9 +66,16 @@ import Navbar from "./Navbar.astro";
       <!-- Secondary -->
       <a
         href="#features"
-        class="w-full sm:w-auto inline-flex items-center justify-center rounded-lg border border-border px-6 py-3 text-sm font-medium text-text hover:bg-surface transition-all duration-300"
+        class="group w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-medium text-text hover:bg-surface transition-all duration-300 hover:shadow-[0_0_20px_rgba(24,204,252,0.15)]"
       >
         View Features
+
+        <!-- Arrow -->
+        <span
+          class="inline-block transition-transform duration-300 group-hover:translate-x-1"
+        >
+          →
+        </span>
       </a>
     </div>
   </div>
