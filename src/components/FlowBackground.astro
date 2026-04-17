@@ -105,7 +105,7 @@ const getGradientId = (index: number) => `#linearGradient-${index}`;
   >
     <defs>
       {
-        Array.from({ length: 50 }).map((_, i) => (
+        Array.from({ length: 35 }).map((_, i) => (
           <linearGradient
             id={`linearGradient-${i}`}
             gradientUnits="userSpaceOnUse"
@@ -125,10 +125,11 @@ const getGradientId = (index: number) => `#linearGradient-${index}`;
       <feComposite in="SourceGraphic" in2="blur" operator="over"></feComposite>
     </filter>
 
-    <g stroke="#1e293b" stroke-width="0.25" stroke-opacity="0.4">
+    <g stroke="#1e293b" stroke-width="0.6" stroke-opacity="0.4">
       {paths.map((d) => <path d={d} />)}
     </g>
-    <g stroke="url(#flow-gradient)" stroke-width="0.5" filter="url(#glow)">
+
+    <g stroke="url(#flow-gradient)" stroke-width="1" filter="url(#glow)">
       {paths.map((d, i) => <path d={d} stroke={`url(${getGradientId(i)})`} />)}
     </g>
   </svg>
@@ -141,49 +142,61 @@ const getGradientId = (index: number) => `#linearGradient-${index}`;
       el: HTMLElement;
       speed: number;
       progress: number;
+      offset: number;
     }[] = [];
 
-    for (let i = 0; i < 50; i++) {
+    const count = 35;
+
+    for (let i = 0; i < count; i++) {
       const el = document.getElementById(`linearGradient-${i}`);
-      if (el)
-        gradients.push({
-          el,
-          // Give each line a slightly different speed (between 0.001 and 0.003)
-          // This prevents them from ever syncing up.
-          speed: 0.001 + Math.random() * 0.002,
-          // Random starting position so they don't all start at once
-          progress: Math.random() * 2,
-        });
+      if (!el) continue;
+
+      gradients.push({
+        el,
+        speed: 0.06 + Math.random() * 0.1,
+        progress: Math.random() * 240 - 80,
+        offset: (Math.random() - 0.5) * 30,
+      });
     }
 
-    if (gradients.length === 0) return;
+    if (!gradients.length) return;
 
     function animate() {
-      gradients!.forEach((item) => {
-        // Increment each line by its own unique speed
-        item.progress += item.speed;
+      for (const g of gradients) {
+        g.progress += g.speed * (0.9 + Math.sin(g.offset) * 0.1);
 
-        // Reset when it leaves the view (using a range of 3 to allow for pauses)
-        if (item.progress > 2.5) {
-          item.progress = -0.5;
+        // Proper looping range
+        if (g.progress > 140) {
+          g.progress = -40;
         }
 
-        const p = item.progress;
-        // Map progress to visual position
-        const val = p * 150 - 75;
+        // 🎯 FIX: normalize before offset so nothing "sticks"
+        let base = g.progress;
 
-        item.el.setAttribute("x1", `${val}%`);
-        item.el.setAttribute("y1", `${val - 10}%`);
-        item.el.setAttribute("x2", `${val + 10}%`); // Smaller x2 makes the line even shorter
-        item.el.setAttribute("y2", `${val + 5}%`);
-      });
+        // Apply offset AFTER normalization
+        const p = base + g.offset;
+
+        // Soft clamp to avoid extreme drift artifacts
+        const val = ((p + 200) % 200) - 100;
+
+        g.el.setAttribute("x1", `${val}%`);
+        g.el.setAttribute("y1", `${val - 10}%`);
+        g.el.setAttribute("x2", `${val + 10}%`);
+        g.el.setAttribute("y2", `${val + 5}%`);
+      }
 
       requestAnimationFrame(animate);
     }
+
     animate();
   };
 
   flow();
-  // Support for Astro View Transitions
   document.addEventListener("astro:after-swap", flow);
 </script>
+
+<style>
+  linearGradient {
+    will-change: transform;
+  }
+</style>
