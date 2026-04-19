@@ -1,35 +1,86 @@
+---
+import { Menu } from "lucide-astro";
+---
+
 <header class="fixed top-0 left-0 w-full z-50">
   <div class="border-b border-border/40 backdrop-blur-md bg-background/30">
     <div
-      class="mx-auto max-w-7xl h-16 px-2 md:px-4 lg:px-6 flex items-center justify-between"
+      class="mx-auto max-w-7xl h-16 px-4 lg:px-6 flex items-center justify-between"
     >
       <!-- Logo -->
-      <div class="flex">
-        <img src="/logo.svg" alt="Panther Logo" class="h-12 w-auto" />
+      <div class="flex items-center">
+        <img src="/logo.svg" alt="Panther Logo" class="h-10 w-auto" />
       </div>
 
-      <!-- Nav Links -->
+      <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center gap-8 text-sm text-muted">
-        <a href="#features" class="hover:text-text transition-colors">
-          Features
-        </a>
-        <a href="#gallery" class="hover:text-text transition-colors">
-          Gallery
-        </a>
-        <a href="#contact" class="hover:text-text transition-colors">
-          Contact
-        </a>
+        <a href="#features" class="hover:text-text transition-colors"
+          >Features</a
+        >
+        <a href="#why" class="hover:text-text transition-colors">Why Us</a>
+        <a href="#products" class="hover:text-text transition-colors"
+          >Products</a
+        >
+        <a href="#contact" class="hover:text-text transition-colors">Contact</a>
       </nav>
 
-      <!-- CTA -->
+      <!-- Right Side -->
       <div class="flex items-center gap-3">
+        <!-- CTA -->
         <a
           href="#contact"
-          class="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-black hover:bg-primaryDark transition-all duration-300"
+          class="hidden sm:inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-black hover:bg-primaryDark transition-all duration-300"
         >
           Get Dealership
         </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="menu-btn"
+          class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-border text-text"
+        >
+          <Menu class="h-5 w-5" />
+        </button>
       </div>
     </div>
   </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-b border-border bg-background/95 backdrop-blur-md"
+  >
+    <div class="px-6 py-6 space-y-4 text-sm text-muted">
+      <a href="#features" class="block hover:text-text transition-colors">
+        Features
+      </a>
+      <a href="#why" class="block hover:text-text transition-colors">
+        Why Choose Us
+      </a>
+      <a href="#products" class="block hover:text-text transition-colors">
+        Products
+      </a>
+      <a href="#contact" class="block hover:text-text transition-colors">
+        Contact
+      </a>
+
+      <!-- CTA -->
+      <a
+        href="#contact"
+        class="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-primary px-4 py-3 text-sm font-medium text-black hover:bg-primaryDark transition-all duration-300"
+      >
+        Get Dealership
+      </a>
+    </div>
+  </div>
 </header>
+
+<!-- Script -->
+<script>
+  const btn = document.getElementById("menu-btn")!;
+  const menu = document.getElementById("mobile-menu")!;
+
+  btn?.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>

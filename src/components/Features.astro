@@ -1,80 +1,81 @@
 ---
-// components/Features.astro
+import {
+  ShieldCheck,
+  Wrench,
+  Truck,
+  IndianRupee,
+  Users,
+  BatteryCharging,
+} from "lucide-astro";
+
+const reasons = [
+  {
+    icon: ShieldCheck,
+    title: "Proven Reliability",
+    desc: "10+ years of consistent performance trusted by drivers across India.",
+  },
+  {
+    icon: Wrench,
+    title: "Low Maintenance",
+    desc: "Engineered to reduce breakdowns and keep your vehicle on the road.",
+  },
+  {
+    icon: Truck,
+    title: "Built for Tough Roads",
+    desc: "Strong chassis designed to handle heavy loads and rough conditions.",
+  },
+  {
+    icon: IndianRupee,
+    title: "Higher Daily Earnings",
+    desc: "Efficient performance helps maximize trips and income every day.",
+  },
+  {
+    icon: Users,
+    title: "Strong Dealer Network",
+    desc: "Wide support system ensures easy access to service and parts.",
+  },
+  {
+    icon: BatteryCharging,
+    title: "Efficient Power Usage",
+    desc: "Optimized battery performance for longer runs and fewer charges.",
+  },
+];
 ---
 
-<section id="features" class="relative py-24 bg-background text-text">
+<section class="relative py-24 bg-background text-text">
   <div class="mx-auto max-w-7xl px-6">
-
     <!-- Heading -->
     <div class="text-center max-w-2xl mx-auto">
       <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">
-        Built for Performance. Designed for Earnings.
+        Why Choose Panther
       </h2>
       <p class="mt-4 text-muted text-sm sm:text-base">
-        Every part of Panther is engineered to deliver reliability, efficiency,
-        and long-term value on the road.
+        A decade of trust, performance, and reliability built into every Panther E-Rickshaw.
       </p>
     </div>
 
     <!-- Grid -->
     <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <!-- Card -->
-      {[
-        {
-          title: "High Mileage Efficiency",
-          desc: "Drive longer on a single charge and maximize daily earnings.",
-        },
-        {
-          title: "Heavy Load Capacity",
-          desc: "Built strong to carry more passengers and goods with ease.",
-        },
-        {
-          title: "Low Maintenance",
-          desc: "Engineered for fewer breakdowns and lower running costs.",
-        },
-        {
-          title: "Durable Build Quality",
-          desc: "Strong chassis designed for Indian roads and long-term use.",
-        },
-        {
-          title: "Comfortable Ride",
-          desc: "Smooth suspension ensures better experience for driver and passengers.",
-        },
-        {
-          title: "Proven Reliability",
-          desc: "Trusted across India for over 10 years in real conditions.",
-        },
-      ].map((item) => (
-        <div class="group rounded-xl border border-border bg-surface/50 p-6 hover:bg-surface transition-all duration-300 hover:shadow-[0_0_25px_rgba(24,204,252,0.15)]">
-
+      {reasons.map((item) => {
+        const Icon = item.icon;
+        return (
+          <div class="group rounded-xl border border-border bg-surface/50 p-6 hover:bg-surface transition-all duration-300 hover:shadow-[0_0_25px_rgba(24,204,252,0.15)]">
           <!-- Icon -->
-          <div class="mb-4 h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-            <!-- Simple SVG icon -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
+            <div class="mb-4 h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+              <Icon class="h-5 w-5" />
+            </div>
+            <!-- Title -->
+            <h3 class="text-lg font-semibold">
+              {item.title}
+            </h3>
+            <!-- Description -->
+            <p class="mt-2 text-sm text-muted leading-relaxed">
+              {item.desc}
+            </p>
           </div>
-
-          <!-- Title -->
-          <h3 class="text-lg font-semibold">
-            {item.title}
-          </h3>
-
-          <!-- Description -->
-          <p class="mt-2 text-sm text-muted leading-relaxed">
-            {item.desc}
-          </p>
-
-        </div>
-      ))}
+        );
+      })}
 
     </div>
   </div>
