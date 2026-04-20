@@ -1,5 +1,5 @@
 ---
-import { Phone, Mail, MapPin } from "lucide-astro";
+import { Phone, Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-astro";
 
 const products = [
   "Panther Deluxe",
@@ -26,7 +26,38 @@ const links = [
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
       <!-- Column 1: Brand -->
       <div>
-        <img src="/logo.svg" alt="Panther Logo" />
+        <img src="/logo.svg" alt="Panther Logo" class="mb-4" />
+
+        <p class="text-sm">
+          Revolutionizing commercial transport in India with sustainable, durable, and cost-effective electric rickshaws. Engineering the future of eco-friendly last-mile mobility.
+        </p>
+
+        <!-- Social Links -->
+        <div class="mt-5 flex items-center gap-4">
+          <a
+            href="https://www.facebook.com/panther.e.rickshaw/"
+            target="_blank"
+            class="p-2 rounded-lg bg-surface hover:bg-primary/10 text-muted hover:text-primary transition-all duration-300"
+          >
+            <Facebook class="size-6" />
+          </a>
+
+          <a
+            href="https://www.instagram.com/panthererickshaw?igsh=emlxdHF5b213cnF3"
+            target="_blank"
+            class="p-2 rounded-lg bg-surface hover:bg-primary/10 text-muted hover:text-primary transition-all duration-300"
+          >
+            <Instagram class="size-6" />
+          </a>
+
+          <a
+            href="https://youtube.com/@panthererickshaw9264?si=_2ELtVAXiP_vJnkE"
+            target="_blank"
+            class="p-2 rounded-lg bg-surface hover:bg-primary/10 text-muted hover:text-primary transition-all duration-300"
+          >
+            <Youtube class="size-6" />
+          </a>
+        </div>
       </div>
 
       <!-- Column 2: Products -->
